@@ -1,7 +1,6 @@
 #include<vector>
 using namespace std;
 
-// TODO
 class Solution {
 public:
     int countPrimes(int n) {

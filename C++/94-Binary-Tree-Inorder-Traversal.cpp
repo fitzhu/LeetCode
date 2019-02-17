@@ -16,7 +16,7 @@ struct TreeNode {
 // 这里用stack<pair<node*, bool>>来存储，使用标志位控制是否输出
 class Solution {
 public:
-    vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> inorderTraversal(TreeNode* root) {
         vector<int> res;
         stack<pair<TreeNode*, bool>> treeNodeStack;
         treeNodeStack.emplace(root, false);
@@ -31,10 +31,10 @@ public:
                 res.emplace_back(root->val);
             } else {
                 // 因为栈是先入后出的，所以会把root->right先入栈
-                // 先序遍历的话，pair<node*, true>放最后，输出node->val
+                // 中序遍历的话，pair<node*, true>放中间，输出node->val
                 treeNodeStack.emplace(root->right, false);
-                treeNodeStack.emplace(root->left, false);
                 treeNodeStack.emplace(root, true);
+                treeNodeStack.emplace(root->left, false);
             }
         }
         return res;
@@ -44,7 +44,7 @@ public:
 // 递归解法
 class Solution2 {
 public:
-    vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> inorderTraversal(TreeNode* root) {
         vector<int> res;
         if (root == nullptr) {
             return res;
@@ -55,8 +55,8 @@ public:
 private:
     void helper(TreeNode* root, vector<int>& tmp) {
         if (root != nullptr) {
-            tmp.emplace_back(root->val);
             helper(root->left, tmp);
+            tmp.emplace_back(root->val);
             helper(root->right, tmp);
         }
     }

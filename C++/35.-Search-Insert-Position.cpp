@@ -1,5 +1,4 @@
 #include<vector>
-
 using namespace std;
 
 // 二分查找
