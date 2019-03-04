@@ -1,6 +1,7 @@
 #include<vector>
 using namespace std;
 
+// 如果中间的数小于最右边的数，则右半段是有序的，若中间数大于最右边数，则左半段是有序的
 class Solution {
 public:
     int search(vector<int>& nums, int target) {

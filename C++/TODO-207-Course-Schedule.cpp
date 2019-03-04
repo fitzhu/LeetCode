@@ -3,7 +3,7 @@ using namespace std;
 
 class Solution {
 public:
-    int numIslands(vector<vector<char>>& grid) {
+    bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
         
     }
 };
