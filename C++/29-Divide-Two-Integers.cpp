@@ -2,6 +2,9 @@
 #include<limits>
 using namespace std;
 
+// 除法的核心思想还是循环减，只不过一个一个减太慢了，直接从除数*最大倍数开始减
+// 另外通过移位，快速实现2倍乘法
+// 此题需要注意的是边界问题，INT_MIN不能做abs，因为它的abs比INT_MAX还大1
 class Solution {
 public:
     int divide(int dividend, int divisor) {
@@ -27,9 +30,11 @@ public:
             flag = 1;
         }
         unsigned int p = abs(dividend), q = abs(divisor);
+        // 找到比被除数小的，除数*最大倍数
         while ((q << i) <= p) {
             i += 1;
         }
+        // 循环处理余数
         for (int j = i - 1; j >= 0; --j) {
             if ((q << j) <= p) {
                 p -= (q << j);
